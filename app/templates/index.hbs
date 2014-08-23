@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>{{title}}</h4>
+  </div>
+  <div class="panel-body">Clicking 'Go' should only create a single 'comment 2'</div>
+  <ul class="list-group">
+  {{#each comments}}
+    <li class="list-group-item">{{body}}</li>
+  {{else}}
+    <li class="list-group-item">none</li>
+  {{/each}}
+  </ul>
+  <div class="panel-footer">
+      <button class="btn btn-sm btn-primary" {{action 'go'}}>Go</button>
+  </div>
+</div>
