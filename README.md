@@ -1,25 +1,9 @@
-# Ed-dupe-test
+# Ember Data Embedded hasMany dupe mockup
 
-This README outlines the details of collaborating on this Ember application.
+Submittins a new record inside an Embedded hasMany relationship
+causes a ghost record in the array. One for the original embedded
+record, which contains a `null` id, the other is the new record
+created from the response JSON which was given a server side id.
 
-## Installation
-
-* `git clone` this repository
-* `npm install`
-* `bower install`
-
-## Running
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-## Running Tests
-
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+Will eventually adapt this with a `client_id` style fix, but ideally
+it should be fixed in Ember Data 1.0
