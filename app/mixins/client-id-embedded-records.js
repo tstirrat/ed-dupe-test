@@ -43,6 +43,12 @@ export default Ember.Mixin.create(DS.EmbeddedRecordsMixin, {
             var record = typeSerializer.clientIdToRecord(clientId);
             if (record) {
               this.store.updateId(record, recordHash);
+
+              // TODO: hack is necessary to keep ED states in tact
+              record.adapterWillCommit();
+              this.store.didSaveRecord(record, recordHash);
+              // TODO: end hack
+
               delete typeSerializer.clientIdMap[clientId];
             }
           }
