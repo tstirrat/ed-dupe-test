@@ -10,6 +10,8 @@ function findById(id) {
   return posts.reduce(function (result, p) { return p.id === id ? p : null; }, null);
 }
 
+var comment_id = 2;
+
 
 module.exports = function(app) {
   var express = require('express');
@@ -26,7 +28,11 @@ module.exports = function(app) {
     var post = req.body.post;
     if (post) {
       post.id = req.params.id;
-      post.comments[1].id = '2';
+      post.comments.forEach(function (comment) {
+        if (!comment.id) {
+          comment.id = (++comment_id) + '';
+        }
+      });
     }
     res.send({ post: post });
   });
