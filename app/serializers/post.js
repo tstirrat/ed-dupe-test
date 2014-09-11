@@ -1,7 +1,6 @@
-import DS from 'ember-data';
-import ClientIdEmbeddedRecordsMixin from '../mixins/client-id-embedded-records';
+import ApplicationSerializer from './application';
 
-export default DS.ActiveModelSerializer.extend(ClientIdEmbeddedRecordsMixin, {
+export default ApplicationSerializer.extend({
   attrs: {
     comments: { embedded: 'always' }
   }
