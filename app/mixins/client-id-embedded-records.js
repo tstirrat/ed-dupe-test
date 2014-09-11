@@ -7,6 +7,8 @@ export default Ember.Mixin.create(DS.EmbeddedRecordsMixin, {
     this._super();
   },
 
+  clientIdKey: '_clientId',
+
   /**
     Return a unique client id
 
@@ -37,7 +39,7 @@ export default Ember.Mixin.create(DS.EmbeddedRecordsMixin, {
           records = [records];
         }
         records.forEach(function (recordHash) {
-          var clientId = recordHash['_clientId'];
+          var clientId = recordHash[this.clientIdKey];
           if (clientId && recordHash.id) {
             var typeSerializer = this.store.serializerFor(relationship.type);
             var record = typeSerializer.clientIdToRecord(clientId);
@@ -62,7 +64,7 @@ export default Ember.Mixin.create(DS.EmbeddedRecordsMixin, {
 
     if (record.get('isNew')) {
       var clientId = this.createClientId(record);
-      json['_clientId'] = clientId;
+      json[this.clientIdKey] = clientId;
     }
 
     return json;
